@@ -1,0 +1,63 @@
+
+.postbox h3{
+	border-bottom: 1px solid #eee;
+}
+
+.postbox .handlediv {
+    float: right;
+    height: 30px;
+    width: 27px;
+    margin-top:-40px;
+}
+
+.welcome-panel-column-container{margin-top:30px;}
+
+.welcome-panel h2{font-weight:bold;}
+
+.welcome-panel h4 {
+    font-weight:bold;
+    margin: 0.33em 0 0;
+}
+
+.make-request{
+	border: solid;
+	  border-color: #ccc;
+  border-width: 1px;
+  -webkit-border-radius: 14px;
+  -moz-border-radius: 14px;
+  border-radius: 12px;
+  min-height: 28px;
+  padding: 0 10px;
+  max-width: 100%;
+}
+
+.complete{ 
+  border-top: 1px solid #eee;
+padding:6px;
+margin-top:30px;
+}
+
+.notes{width:80%;}
+
+.fail-title{color:red;}
+
+
+.welcome-panel-content h2{width:300px; display:inline-block;}
+
+.progress-wrap{
+  height:40px;
+  width:80%;
+  display:block;
+  margin-top:0;
+  margin-bottom:35px;
+  margin-left:35px;
+
+}
+
+.progressbar{ 
+  height:8px; 
+  border:1px solid #666; 
+  border-radius:4px;
+  background:#00a0d2;
+  width:20%;
+}
