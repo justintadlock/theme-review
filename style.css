@@ -10,6 +10,13 @@
     margin-top:-40px;
 }
 
+.handlediv:before {
+  margin-top:-45px;
+  float:right;
+  left: 12px;
+  font: normal 20px/1 'dashicons';
+  content: '\f142';
+}
 .welcome-panel-column-container{margin-top:30px;}
 
 .welcome-panel h2{font-weight:bold;}
@@ -18,7 +25,12 @@
     font-weight:bold;
     margin: 0.33em 0 0;
 }
-
+.welcome-panel h5 {
+    font-size:14px;
+    font-weight:bold;
+    font-style:italic;
+    margin: 0.33em 0 0 12px;
+}
 .make-request{
 	border: solid;
 	  border-color: #ccc;
@@ -60,4 +72,9 @@ margin-top:30px;
   border-radius:4px;
   background:#00a0d2;
   width:20%;
+}
+
+.ready-button{
+margin:35px;
+  text-align:centeR;
 }
