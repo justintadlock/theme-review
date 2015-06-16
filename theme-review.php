@@ -27,7 +27,7 @@ function theme_review_admin_scripts() {
 }
 
 include( plugin_dir_path( __FILE__ ) . 'customizer.php');
-
+include( plugin_dir_path( __FILE__ ) . 'check.php');
 /**
  * Create the options page
  */
@@ -169,6 +169,52 @@ function theme_review_do_page() {
 <h3>You should now have your theme folder and your code editor ready so that you can easilly check the files.</h3>
 <a href="customize.php" class="button button-primary button-hero">I understand, take me to the customizer.</a>
 </div>
+
+<div class="welcome-panel">			
+<h2><b>Additional help</b></h2>
+<div title="Click to toggle" class="handlediv"><br></div>
+	<div class="welcome-panel-content">				<h3>Stylesheets and Scripts</h3>
+					
+					The most common errors for this section are hardcoded scripts or styles in header.php and footer.php, and themes including their own version of jQuery or jQuery UI instead of using the core-bundled scripts.<br>
+					Please check all folders for minified and duplicate files. It is not uncommon for authors to forget to include the original versions of Font Awesome and Bootstrap.<br>
+
+					<b>Examples:</b><br>
+					This is the wrong way of adding the stylesheet:<br>
+					<code> &lt;link type="text/css" rel="stylesheet" href="&lt;?php echo get_stylesheet_uri(); ?> /></code><br>
+					Correct way of adding the stylesheet to the front end:<br>
+					<code>
+					add_action( 'wp_enqueue_scripts', 'theme_slug_css' );<br>
+					function theme_slug_css() {<br>
+					    wp_enqueue_style( 'theme-slug-style', get_stylesheet_uri() );<br>
+					}
+					</code><br>
+					Correct way of adding jQuery:<br>
+					jQuery can be added as a dependancy of a custom script like this:<br>
+					<code>
+					add_action( 'wp_enqueue_scripts', 'theme_slug_scripts' );<br>
+					function theme_slug_scripts() {<br>
+						wp_enqueue_script('theme-slug-custom-script', get_stylesheet_directory_uri() . '/js/custom_script.js',	array( 'jquery' ) );<br>
+					}
+					</code>
+					Or by itself like this:<br>
+					<code>
+					add_action( 'wp_enqueue_scripts', 'theme_slug_scripts' );<br>
+					function theme_slug_scripts() {<br>
+						wp_enqueue_script('jquery');<br>
+					}
+					</code><br>
+
+
+					<?php
+    				 	$preg = '/<script src/';
+						foreach ( glob(get_template_directory() . "/*.php")  as $file ) {
+							theme_review_checker( $preg, $file, "script");
+						}
+
+                    ?>
+	</div>
+</div>
+
 
 </div><!--end wrap -->
 	<?php
