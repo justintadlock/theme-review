@@ -18,7 +18,7 @@ Text Domain: theme-review
  */
 add_action( 'admin_menu', 'theme_review_add_page' );
 function theme_review_add_page() {
-	  $page_hook_suffix = add_submenu_page( 'index.php', __( 'Theme Review', 'theme-review' ), __( 'Theme Review', 'theme-review' ), 'manage_options', 'theme_review', 'theme_review_do_page' );
+	  $page_hook_suffix = add_submenu_page( 'themes.php', __( 'Theme Review', 'theme-review' ), __( 'Theme Review', 'theme-review' ), 'manage_options', 'theme_review', 'theme_review_do_page' );
 	  add_action('admin_print_scripts-' . $page_hook_suffix, 'theme_review_admin_scripts');
 }
 
@@ -88,14 +88,14 @@ function theme_review_do_page() {
 
 		<div style="margin-top:20px; padding-bottom:40px;">
 			<h3><b><?php _e( 'Now, is your ticket ready?', 'theme-review' );?></b></h3>
-			<h5>You are reviewing:
+			<h5><?php _e('You are reviewing:','theme-review');?>
 			<?php
 			$trt_theme = wp_get_theme();
 			echo $trt_name =$trt_theme->get( 'Name' );
 			?>.  -If this is not your ticket, <a href="<?php admin_url('themes.php');?>"><?php _e( 'install and activate the correct theme.','theme-review');?></a></h5>
 			<h4><?php _e( 'Ticket? -What ticket?','theme-review');?></h4>
 			A theme trac ticket is a ticket with information about a theme that has been submitted for review.</br>
-			First you need to <button class="make-request">Request a theme to review.</button>
+			First you need to <a href="https://make.wordpress.org/themes/"><button class="make-request">Request a theme to review.</button></a>
 			You will then find your tickets here: <a href="https://themes.trac.wordpress.org/query?status=!closed&owner=$USER">https://themes.trac.wordpress.org</a><br>
 			In your ticket you will find the theme name, the authors name, and a link to a zip file containing the theme that you should review.<br>
 			Below the theme screenshot is a form, so if you haven't already, sa 'Hi' and <b>introduce yourself to your author.</b>
@@ -104,6 +104,20 @@ function theme_review_do_page() {
 
 		</div>
 	<div class="welcome-panel-column welcome-panel-last">
+	<p style="color:red">To do:<br>
+	Move "Additional help" to a separate tab<br>
+	Move The menu item to Appearance <br>
+	Fix the request a theme button <br>
+	Add the summary ( get_theme_mod)<br>
+	Add a link to the examples page on make.<br>
+	Add Customizer sections for:<br>
+	prefixing,<br> sanitizing,<br> escaping<br> security,<br> plugin territory<br>accessibility-ready -warn if the tag is added.<br>
+	(Some of the prefixing checks can be automated -add a list of all functions for manual check?)<br>
+	If possible, reduce the wall of text...<br>
+	Clean up, translate, -add the repeated radio buttons in a smarter way.<br>
+
+
+	</p>
 		<h4>Stuck?</h4>
 		<p><b>If you have questions about reviewing, come talk to other reviewers on <a href="https://make.wordpress.org/chat/">wordpress.slack.com #themereview</a></b></p>
 		We also have Weekly Chats:<br>
@@ -121,24 +135,25 @@ function theme_review_do_page() {
 </div>
 
 <div class="welcome-panel">			
-<h2><b>Performing your review</b></h2>
+<h2><b><?php _e('Performing your review','theme-review');?></b></h2>
 <div title="Click to toggle" class="handlediv"><br></div>
 	<div class="welcome-panel-content">
-			<h5>The full guidelines that you will review the theme against can be found <a href="https://make.wordpress.org/themes/handbook/review/required/">here.</a></h5><br>
-			
+			<h5>The full guidelines that you will review the theme against can be found <a href="https://make.wordpress.org/themes/handbook/review/required/">here.</a>
+			The plugin should only be seen as a complement to the guidelines.</h5><br>
+
 			<b>What you will be checking:</b><br>
 			There is more to a review than checking if the content is displayed nicely. You will be checking if the theme is <b>secure</b>, if there are any <b>errors</b>, if it is <b>translatable</b>
 			and if all theme <b>options</b> are working correctly.<br>
 			You will be reading a lot of code, and one theme will have a different setup than the other, but don't worry, this becomes easier as you gain more experience.<br>
 
 			<b>Reviewing a theme with the help of the plugin:</b><br>
+
 			Each section under the Theme Review panel in the customizer represents a requirement, accompanied with a short statement or a question.<br>
 			Once a check has been completed, it will be added to the progress and summary below.<br>
 			<i>Example:</i><br>
 			<?php echo '<img src="' . plugins_url( 'lang.png', __FILE__ ) . '" > ';?>
 			<br>
 			<i>Anything in red is a required item that should be noted in your review.</i><br><br>
-
 
 			<h3><b>Writing your review</b></h3>
 			You should take notes as you review each part of the theme, and write down any questions that you have for the author.<br>
@@ -168,14 +183,32 @@ function theme_review_do_page() {
 <div class="ready-button">
 <h3>You should now have your theme folder and your code editor ready so that you can easilly check the files.</h3>
 <a href="customize.php" class="button button-primary button-hero">I understand, take me to the customizer.</a>
+<br><br>
+<h2><?php __('Summary:','theme-review');?></h2>
+<hr>
+<?php
+ echo '<h3>' . __( 'Naming and Licensing', 'theme-review' ) . ': ' . get_theme_mod('theme_review_license', '') .'</h3>';
+ echo '<h3>' . __( 'Links', 'theme-review' ) . ': ' .  get_theme_mod('theme_review_links', '').'</h3>';
+
+ echo '<h3>' . __( 'Language', 'theme-review' ) . ': ' . get_theme_mod('theme_review_lang', '').'</h3>';
+ echo '<h3>' . __( 'Stylesheets and Scripts', 'theme-review' ) . ': ' . get_theme_mod('theme_review_scripts', '').'</h3>';
+
+ echo '<h3>' . __( 'Errors, warnings and notices', 'theme-review' ) . ': ' . get_theme_mod('theme_review_errors', '').'</h3>';
+ echo '<h3>' . __( 'Core functionality', 'theme-review' ) . ': ' .  get_theme_mod('theme_review_core', '').'</h3>';
+
+?>
+
+
+
 </div>
 
 <div class="welcome-panel">			
-<h2><b>Additional help</b></h2>
+<h2><b><?php _e('Additional help','theme-review');?></b></h2>
 <div title="Click to toggle" class="handlediv"><br></div>
 	<div class="welcome-panel-content">				<h3>Stylesheets and Scripts</h3>
 					
-					The most common errors for this section are hardcoded scripts or styles in header.php and footer.php, and themes including their own version of jQuery or jQuery UI instead of using the core-bundled scripts.<br>
+					The most common errors for this section are hardcoded scripts or styles in header.php and footer.php, 
+					and themes including their own version of jQuery or jQuery UI instead of using the core-bundled scripts.<br>
 					Please check all folders for minified and duplicate files. It is not uncommon for authors to forget to include the original versions of Font Awesome and Bootstrap.<br>
 
 					<b>Examples:</b><br>

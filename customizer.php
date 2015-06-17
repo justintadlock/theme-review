@@ -48,7 +48,37 @@ function theme_review_customize_register( $wp_customize ) {
             'panel' => 'theme_review_panel',
     ));
 
+/*License*/
+    $wp_customize->add_setting( 'theme_review_license',    array(
+        'sanitize_callback' => 'theme_review_sanitize_radio',
+    ));
+    $wp_customize->add_setting( 'theme_review_license_desc',    array(
+        'sanitize_callback' => 'example_sanitize_text',
+    ));
 
+    /*controls*/
+    $wp_customize->add_control('theme_review_license_desc',  array(
+        'type' => 'hidden',
+        'description' => __('The theme name must not contain trademarks, "WordPress" or "Theme".','theme-review')
+                   . '<br><br>' . __('The theme needs to be 100% GPL compatible.','theme-review') 
+                   . '<br><br>' . __('The theme should: <br> -Use the license and license uri in the header of style.css','theme-review') 
+                   . '<br>' .__('-Declare licenses of any resources included such as fonts or images, including images used in the screenshot','theme-review') 
+                   . '<br>' . __('-Have a copyright notice:<br> (Copyright Year Name).','theme-review')
+                   . '<br><br><span class="dashicons dashicons-media-code"></span>' . __('Open the readme file and make sure that license and copyright has been declared for all included third party resources.','theme-review')
+                   . '<br><br><span class="dashicons dashicons-visibility"></span> <a href="http://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses">' . __('List of GPL compatible licenses','theme-review') . '</a>', 
+        'section' => 'theme_review_section_license',
+    ));
+
+    $wp_customize->add_control('theme_review_license',  array(
+        'type' => 'radio',
+        'label' => __('Mark as completed:' ,'theme-review'),
+        'section' => 'theme_review_section_license',
+        'choices' => array(
+            'pass' => __('Pass','theme-review'),
+            'fail' => __('Fail','theme-review'),
+        ),
+    ));
+    
 /*Links*/
 	$trt_theme = wp_get_theme();
 	$trt_author_uri =$trt_theme->get( 'AuthorURI' );
@@ -132,36 +162,6 @@ function theme_review_customize_register( $wp_customize ) {
         ),
     ));
 
-/*License*/
-    $wp_customize->add_setting( 'theme_review_license',    array(
-        'sanitize_callback' => 'theme_review_sanitize_radio',
-    ));
-    $wp_customize->add_setting( 'theme_review_license_desc',    array(
-        'sanitize_callback' => 'example_sanitize_text',
-    ));
-
-    /*controls*/
-    $wp_customize->add_control('theme_review_license_desc',  array(
-        'type' => 'hidden',
-        'description' => __('The theme name must not contain trademarks, "WordPress" or "Theme".','theme-review')
-                   . '<br><br>' . __('The theme needs to be 100% GPL compatible.','theme-review') 
-                   . '<br><br>' . __('The theme should: <br> -Use the license and license uri in the header of style.css','theme-review') 
-                   . '<br>' .__('-Declare licenses of any resources included such as fonts or images, including images used in the screenshot','theme-review') 
-                   . '<br>' . __('-Have a copyright notice:<br> (Copyright Year Name).','theme-review')
-                   . '<br><br><span class="dashicons dashicons-media-code"></span>' . __('Open the readme file and make sure that license and copyright has been declared for all included third party resources.','theme-review')
-                   . '<br><br><span class="dashicons dashicons-visibility"></span> <a href="http://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses">' . __('List of GPL compatible licenses','theme-review') . '</a>', 
-        'section' => 'theme_review_section_license',
-    ));
-
-    $wp_customize->add_control('theme_review_license',  array(
-        'type' => 'radio',
-        'label' => __('Mark as completed:' ,'theme-review'),
-        'section' => 'theme_review_section_license',
-        'choices' => array(
-            'pass' => __('Pass','theme-review'),
-            'fail' => __('Fail','theme-review'),
-        ),
-    ));
 
 /*Scripts*/
     $wp_customize->add_setting( 'theme_review_scripts',    array(
@@ -235,11 +235,10 @@ function theme_review_customize_register( $wp_customize ) {
     $wp_customize->add_control('theme_review_core_desc',  array(
         'type' => 'hidden',
         'description' =>__('The theme should use WordPress functionality and features first, if available. This means that custom functions should not mimic or attempt to replace core functions.','theme-review')
-                    . '<br>' . __('Common example of these are custom pagination without core functions, custom search forms without <code>get_search_form()</code>.','theme-review')
-                    .'<br><br> No disabling of the admin tool bar. <br> No removing or modifying non-presentational hooks, for example <code>remove_action( "wp_head", "wp_generator" )</code>  
-                    <br> No pay wall restricting any WordPress feature.'
-                    . '<br><br><code>' . __('comments_template();','theme-review') . '</code> must be included in singular views.'
-                    ,
+                    . '<br>' . __('Common example of these are custom pagination, hard coded search forms, and custom image resizing.','theme-review')
+                    .'<br><br>' . __(' No disabling of the admin tool bar. <br> No removing or modifying non-presentational hooks, for example <code>remove_action( "wp_head", "wp_generator" )</code>.','theme-review')  
+                    . '<br>' . __('No pay wall restricting any WordPress feature.','theme-review') 
+                    . '<br><br>'. __('<code>comments_template();</code> must be included in singular views.','theme-review'),
         'section' => 'theme_review_section_core',
     ));
 
