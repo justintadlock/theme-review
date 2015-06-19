@@ -1,15 +1,3 @@
-
-.postbox h3{
-	border-bottom: 1px solid #eee;
-}
-
-.postbox .handlediv {
-    float: right;
-    height: 30px;
-    width: 27px;
-    margin-top:-40px;
-}
-
 .handlediv:before {
   margin-top:-45px;
   float:right;
@@ -17,20 +5,31 @@
   font: normal 20px/1 'dashicons';
   content: '\f142';
 }
+
+.welcome-panel-content{max-width:100%;}
+
 .welcome-panel-column-container{margin-top:30px;}
 
-.welcome-panel h2{font-weight:bold;}
+.welcome-panel{font-size:14px;}
+
+.welcome-panel h1, .welcome-panel h2{font-weight:bold; margin:0; margin-left:15px;}
+
+.welcome-panel .about-description{color:#000;}
+
+.welcome-panel-content h2{width:300px; display:inline-block;}
 
 .welcome-panel h4 {
     font-weight:bold;
     margin: 0.33em 0 0;
 }
+
 .welcome-panel h5 {
     font-size:14px;
     font-weight:bold;
     font-style:italic;
     margin: 0.33em 0 0 12px;
 }
+
 .make-request{
 	border: solid;
 	  border-color: #ccc;
@@ -43,36 +42,8 @@
   max-width: 100%;
 }
 
-.complete{ 
-  border-top: 1px solid #eee;
-padding:6px;
-margin-top:30px;
-}
-
-.notes{width:80%;}
-
-.fail-title{color:red;}
-
-
-.welcome-panel-content h2{width:300px; display:inline-block;}
-
-.progress-wrap{
-  height:40px;
-  width:80%;
-  display:block;
-  margin-top:0;
-  margin-bottom:35px;
-  margin-left:35px;
-
-}
-
-.progressbar{ 
-  height:8px; 
-  border:1px solid #666; 
-  border-radius:4px;
-  background:#00a0d2;
-  width:20%;
-}
+.pass{color:#00cc66;}
+.fail{color:#cc0000;}
 
 .ready-button{
 margin:35px;

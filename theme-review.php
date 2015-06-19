@@ -2,7 +2,7 @@
 /*
 Plugin Name: Theme Review
 Plugin URI:  
-Description: This plugin is designed as a guide to help you with your first theme review. It can also be helpful as a check list for theme authors. Version:     1.0.0
+Description: This plugin is designed as a guide to help you with your first theme review. It can also be helpful as a check list for theme authors.
 Version: 1.0.0
 Author:      TRT
 Author URI:  https://make.wordpress.org/themes/
@@ -10,7 +10,6 @@ License:     GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Domain Path: /languages
 Text Domain: theme-review
-
 */
 
 /**
@@ -26,10 +25,15 @@ function theme_review_admin_scripts() {
     wp_enqueue_style('theme-review-style', plugins_url( '/style.css', __FILE__ ) );
 }
 
+add_action( 'plugins_loaded', 'theme_review_load_textdomain' );
+function theme_review_load_textdomain() {
+  load_plugin_textdomain( 'theme-review', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' ); 
+}
+
 include( plugin_dir_path( __FILE__ ) . 'customizer.php');
-include( plugin_dir_path( __FILE__ ) . 'check.php');
+
 /**
- * Create the options page
+ * Create the page
  */
 function theme_review_do_page() {
 ?>
@@ -38,217 +42,215 @@ function theme_review_do_page() {
     $('.welcome-panel').find('.handlediv').click(function(){
       //Expand or collapse this panel
       $(this).next().slideToggle('fast');
-      //Hide the other panels
-     //'' $(".handlediv").not($(this).next()).slideUp('fast');
     });
-
   });
- </script>
+</script>
 
 <div class="wrap">
-<div class="welcome-panel">	<h2><?php _e( 'Theme Review', 'theme-review' );?></h2>	
-<div title="Click to toggle" class="handlediv"><br></div>
+<div class="welcome-panel"><h1><?php _e( 'Theme Review', 'theme-review' );?></h1>	
+<div title="<?php _e('Click to toggle','theme-review');?>" class="handlediv"><br></div>
 	<div class="welcome-panel-content">
-	
-		<p class="about-description"><?php _e('This plugin is designed as a guide to help you with your first theme review.','theme-review');?></p>
-
+	<p class="about-description"><?php _e('This plugin is designed to be a compliment to the Theme Review guidelines and as a guide to help you with your first theme review.','theme-review');?></p>
 		<div class="welcome-panel-column-container">
-		<div class="welcome-panel-column" style="width:65%;">
-		<h3><b><?php _e('Preparing for your review','theme-review');?></b></h3>
+			<div class="welcome-panel-column" style="width:65%;">
+			<h3><b><?php _e('Preparing for your review','theme-review');?></b></h3>
+			<?php 
+			_e( 'Awesome! You have already completed the first steps in setting up your testing environment:','theme-review');
 
-		<?php 
-		echo __( 'Awesome! You have already completed the first steps in setting up your testing environment:','theme-review');
-
-		if ( defined( 'WP_DEBUG' ) ){
-			 echo ' <code>'. __('WP_DEBUG is on.','theme-review') . '</code> ';
-		} else {
-			echo  '<p>' . __( 'Now, we recommend ou to set the following constants to <code>true</code> in your <code>wp-config.php</code> file. 
-				<a href="http://codex.wordpress.org/Editing_wp-config.php" target="_blank">Need help?</a>', 'theme-review' ) . '</p> ';
-		}
-
-		//Theme check
-		if (is_plugin_active('theme-check/theme-check.php')) {
-			echo __('Theme Check is active.','theme-review');
-		}else{
-
-			if ( ! current_user_can( 'install_plugins' ) ) {
-				return;
+			if ( defined( 'WP_DEBUG' ) ){
+				 echo ' <code>'. __('WP_DEBUG is on.','theme-review') . '</code> ';
+			} else {
+				echo  '<p>';
+				printf( __('Now, we recommend you to set the following constants to <code>true</code> in your <code>wp-config.php</code> file. <a href="%s" target="_blank">Need help?</a>', 'theme-review' ), esc_url("http://codex.wordpress.org/Editing_wp-config.php") );
+				echo '</p> ';
 			}
 
-			if (file_exists( WP_PLUGIN_DIR . '/' . 'theme-check/theme-check.php' ) && is_plugin_inactive('theme-check/theme-check.php')){
-				echo '<p>' . __('Theme Check is installed but not active.','theme-review') . '</p> ';
-				//todo: Use activation link with wp_nonce_url
-				echo '<a href="' . admin_url('plugins.php') . '" class="button button-primary button-hero">' . esc_html__( 'Activate Theme Check', 'theme-review' ) . '</a>';
+			//Check if Theme check is active
+			if (is_plugin_active('theme-check/theme-check.php')) {
+				echo __('Theme Check is active.','theme-review');
 			}else{
-				echo '<p>' . __( 'We recommend that you also install the Theme Check plugin:', 'theme-review' ) . '</p> ';
-				echo '<a href="' . admin_url('plugins.php') . '" class="button button-primary button-hero">' . esc_html__(' Install Theme Check', 'theme-review' ) . '</a>';
+				if ( ! current_user_can( 'install_plugins' ) ) {
+					return;
+				}
+				if (file_exists( WP_PLUGIN_DIR . '/' . 'theme-check/theme-check.php' ) && is_plugin_inactive('theme-check/theme-check.php')){
+					echo '<p>' . __('Theme Check is installed but not active.','theme-review') . '</p> ';
+					//todo: Use activation link with wp_nonce_url
+					echo '<a href="' . admin_url('plugins.php') . '" class="button button-primary button-hero">' . esc_html__( 'Activate Theme Check', 'theme-review' ) . '</a>';
+				}else{
+					echo '<p>' . __( 'We recommend that you also install the Theme Check plugin:', 'theme-review' ) . '</p> ';
+					echo '<a href="' . admin_url('plugins.php') . '" class="button button-primary button-hero">' . esc_html__(' Install Theme Check', 'theme-review' ) . '</a>';
+				}
 			}
-		}
-		?>
+			?>
 
-		<div style="margin-top:20px; padding-bottom:40px;">
-			<h3><b><?php _e( 'Now, is your ticket ready?', 'theme-review' );?></b></h3>
-			<h5><?php _e('You are reviewing:','theme-review');?>
-			<?php
-			$trt_theme = wp_get_theme();
-			echo $trt_name =$trt_theme->get( 'Name' );
-			?>.  -If this is not your ticket, <a href="<?php admin_url('themes.php');?>"><?php _e( 'install and activate the correct theme.','theme-review');?></a></h5>
-			<h4><?php _e( 'Ticket? -What ticket?','theme-review');?></h4>
-			A theme trac ticket is a ticket with information about a theme that has been submitted for review.</br>
-			First you need to <a href="https://make.wordpress.org/themes/"><button class="make-request">Request a theme to review.</button></a>
-			You will then find your tickets here: <a href="https://themes.trac.wordpress.org/query?status=!closed&owner=$USER">https://themes.trac.wordpress.org</a><br>
-			In your ticket you will find the theme name, the authors name, and a link to a zip file containing the theme that you should review.<br>
-			Below the theme screenshot is a form, so if you haven't already, sa 'Hi' and <b>introduce yourself to your author.</b>
-			<br>
-		</div>
+			<div style="margin-top:20px; padding-bottom:40px;">
+				<h3><b><?php _e( 'Now, is your ticket ready?', 'theme-review' );?></b></h3>
+				<h5><?php _e('You are reviewing:','theme-review');?>
+				<?php
+				//fetch and print the theme name
+				$trt_theme = wp_get_theme();
+				echo $trt_name =$trt_theme->get( 'Name' );
+				?>.  
+				<?php printf( __('-If this is not your ticket, <a href="%s">install and activate the correct theme.</a>', 'theme-review'), esc_url( admin_url('themes.php') ) );?><br></h5>
+				<h4><?php _e( 'Ticket? -What ticket?','theme-review');?></h4>
+				<?php _e( 'A theme trac ticket is a ticket with information about a theme that has been submitted to WordPress.org.','theme-review');?><br>
+				<?php _e( 'If this is your first review, you might be more comfortable reviewing our test theme that you can download here: (add link to doing it wrong).','theme-review');?><br><br>
+				<?php printf( __('If you are ready to take on a real ticket, please <a href="%s"><button class="make-request">Request a theme to review.</button></a>', 'theme-review'), esc_url( 'https://make.wordpress.org/themes/' ) );?>
+				<?php printf( __('You will then find your tickets here: <a href="%s">https://themes.trac.wordpress.org</a>.', 'theme-review'), esc_url( 'https://themes.trac.wordpress.org/query?status=!closed&owner=$USER' ) );?>
+				<br><br>
+				<?php _e( 'In your ticket you will find the theme name, the authors name, and a link to a zip file containing the theme that you should review.<br>','theme-review');?>
+				<?php _e( 'Below the theme screenshot is a form, so sa "Hi" and <b>introduce yourself to your author.</b>','theme-review');?>
+				<br>
+			</div>
 
 		</div>
 	<div class="welcome-panel-column welcome-panel-last">
-	<p style="color:red">To do:<br>
-	Move "Additional help" to a separate tab<br>
-	Move The menu item to Appearance <br>
-	Fix the request a theme button <br>
-	Add the summary ( get_theme_mod)<br>
-	Add a link to the examples page on make.<br>
-	Add Customizer sections for:<br>
-	prefixing,<br> sanitizing,<br> escaping<br> security,<br> plugin territory<br>accessibility-ready -warn if the tag is added.<br>
-	(Some of the prefixing checks can be automated -add a list of all functions for manual check?)<br>
-	If possible, reduce the wall of text...<br>
-	Clean up, translate, -add the repeated radio buttons in a smarter way.<br>
-
-
-	</p>
-		<h4>Stuck?</h4>
-		<p><b>If you have questions about reviewing, come talk to other reviewers on <a href="https://make.wordpress.org/chat/">wordpress.slack.com #themereview</a></b></p>
-		We also have Weekly Chats:<br>
-		Weekly Meeting<br>
-		Tuesdays @ 18:00 UTC<br>
-		Slack #themereview<br>
-		<i>For agenda, visit our make blog below.</i><br><br>
-		Theme trac meeting: looking at tickets that relate to themes<br>
-		Thursdays @ 18:00 UTC<br>
-		Slack #themereview<br><br>
-		<a href="https://make.wordpress.org/themes/">Home of the Theme Review Team: make.wordpress.org/themes/</a><br><br>
+		<h4><?php _e( 'Stuck?', 'theme-review' );?></h4>
+		<p><b>
+		<?php printf( __('If you have questions about reviewing, come talk to other reviewers on <a href="%s">wordpress.slack.com #themereview</a>', 'theme-review'), esc_url( 'https://make.wordpress.org/chat/') );?>
+		</b></p>
+		<?php printf( __('We also have weekly meetings on Slack:<br>Tuesdays @ 18:00 UTC<br><i>For agenda, visit our Make blog:</i> <a href="%s">make.wordpress.org/themes/</a>', 'theme-review'), esc_url( 'https://make.wordpress.org/themes/') );?>
+		<br><br>
 	</div>
 </div>
 </div>
 </div>
 
 <div class="welcome-panel">			
-<h2><b><?php _e('Performing your review','theme-review');?></b></h2>
-<div title="Click to toggle" class="handlediv"><br></div>
+	<h2><b><?php _e('Performing your review','theme-review');?></b></h2>
+	<div title="<?php _e('Click to toggle','theme-review');?>" class="handlediv"><br></div>
 	<div class="welcome-panel-content">
-			<h5>The full guidelines that you will review the theme against can be found <a href="https://make.wordpress.org/themes/handbook/review/required/">here.</a>
-			The plugin should only be seen as a complement to the guidelines.</h5><br>
+		<h5><?php printf( __('The full guidelines that you will review the theme against can be found <a href="%s">here.</a>', 'theme-review'), esc_url( 'https://make.wordpress.org/themes/handbook/review/required/' ));
+			echo ' ' . __('The plugin should only be seen as a complement to the guidelines.','theme-review');?>
+		</h5><br>
+			<?php 
+			echo __('<b>What you will be checking:</b>','theme-review') . '<br>' .
+			__('There is more to a review than checking if the content is displayed nicely. You will be checking if the theme is <b>secure</b>, 
+			if there are any <b>errors</b>, if it is <b>translatable</b> and if all theme <b>options</b> are working correctly.<br>','theme-review');
+			_e('You will be reading a lot of code, and one theme will have a different setup than the other, but don\'t worry, this becomes easier as you gain more experience.<br>','theme-review');
+			echo __('<b>Reviewing a theme with the help of the plugin:</b>','theme-review') . '<br>';
+			echo __('Each section under the Theme Review panel in the customizer represents a requirement, accompanied with a short statement or a question.','theme-review') . '<br>'
+			 . __('Once a check has been completed, it will be added to the progress and summary below.','theme-review');
 
-			<b>What you will be checking:</b><br>
-			There is more to a review than checking if the content is displayed nicely. You will be checking if the theme is <b>secure</b>, if there are any <b>errors</b>, if it is <b>translatable</b>
-			and if all theme <b>options</b> are working correctly.<br>
-			You will be reading a lot of code, and one theme will have a different setup than the other, but don't worry, this becomes easier as you gain more experience.<br>
+			echo '<br><i>' . __('Example:','theme-review') . '</i><br>';
+			echo '<img src="' . esc_url( plugins_url( 'lang.png', __FILE__ ) ) . '" alt="' . __('An image showing what a section looks like.','theme-review') . '" > ';
+			echo '<br><i>' . __('Anything in red is a required item that should be noted in your review.','theme-review') . '</i><br><br>';
+			echo '<h3><b>'. __('Writing your review','theme-review') . '</b></h3>';
+			echo __('You should take notes as you review each part of the theme, and write down any questions that you have for the author.','theme-review') . '<br>' . 
+			__('The suggested format for your review is as follows:','theme-review') . '<br>';
+			echo '<ul><li><b>' . __('Welcome wrapper.','theme-review') . '</b> ' . __('Say Hi to the author, let them know what you are going to do. This may be their first review.','theme-review') . '</li>' .
+				'<li><b>' . __('Say the outcome.','theme-review') . '</b> ' . __('Let the author know from the start what the outcome is.','theme-review') . '</li>' .
+				'<li><b>' . __('Required.','theme-review') . '</b> ' . __('List all the required items, a theme can\'t be approved until all of these are met.','theme-review') . '</li>' .
+				'<li><b>' . __('Recommended.','theme-review') . '</b> ' . __('You can then list all the recommended items. These won\'t be a grounds to not approve, but they are good theme practice.','theme-review') . '</li>' .
+				'<li><b>' . __('Notes.','theme-review') . '</b> ' .  __('This could be a section where you add design notes, maybe additional information. Again, this can\'t be something you don\'t approve because, but it can be a way to educate.','theme-review') . '</li>' .
+				'<li><b>' . __('Say what is going to happen next.','theme-review') . '</b> '.  __('Keeping the author informed is great. Let them know you will let them upload a new version or what the approval process is.','theme-review') . '</li>' .
+				'</ul>';
 
-			<b>Reviewing a theme with the help of the plugin:</b><br>
-
-			Each section under the Theme Review panel in the customizer represents a requirement, accompanied with a short statement or a question.<br>
-			Once a check has been completed, it will be added to the progress and summary below.<br>
-			<i>Example:</i><br>
-			<?php echo '<img src="' . plugins_url( 'lang.png', __FILE__ ) . '" > ';?>
-			<br>
-			<i>Anything in red is a required item that should be noted in your review.</i><br><br>
-
-			<h3><b>Writing your review</b></h3>
-			You should take notes as you review each part of the theme, and write down any questions that you have for the author.<br>
-			The suggested format for your review is as follows:<br>
-				<ul>
-				<li><b>‘Welcome wrapper’</b> Say Hi to the author, let them know what you are going to do. This may be their first review.</li>
-				<li><b>Say the outcome.</b> Let the author know from the start what the outcome is.<li>
-				<li><b>Required.</b> List all the required items, a theme can’t be approved until all of these are met.</li>
-				<li><b>Recommended.</b> You can then list all the recommended items. These won’t be a grounds to not approve, but they are good theme practice.</li>
-				<li><b>Notes.</b> This could be a section where you add design notes, maybe additional information. Again, this can’t be something you don’t approve because, but it can be a way to educate.</li>
-				<li><b>Say what is going to happen next</b>. Keeping the author informed is great. Let them know you will let them upload a new version or what the approval process is.</li>
-				</ul>
-
-				<h5>Using the headings ‘Required, Recommended and Notes’ is really helpful for people when viewing the review.</h5>
-				<br>
-				
-			<h3><b>Finishing your review</b></h3>
-				It is important that you do not close the ticket when you submit your notes.<br>
-				If there are required items that needs to be fixed, the author has seven days to reply. They can then submit a new version, or ask for more time.<br>
-				If a new version is submitted, you need to check if all the required items has been fixed. <br>
-				When you feel that a theme is ready to be approved, you should ask for feedback from your mentor or an experienced theme reviewer before you close the ticket.<br>
-				-If seven days has passed without any word from the theme author, you can close the ticket as not approved.<br>
-				<br>
+			_e('<h5>Using the headings "Required, Recommended and Notes" is really helpful for people when viewing the review.</h5>','theme-review') ;
+			echo '<br><h3><b>' . __('Finishing your review','theme-review') . '</b></h3>' . 
+			__('It is important that you do not close the ticket when you submit your notes.','theme-review') . '<br>' . 
+			__('If there are required items that needs to be fixed, the author has seven days to reply. They can then submit a new version, or ask for more time.','theme-review') . '<br>' .
+			__('If a new version is submitted, you need to check if all the required items has been fixed.','theme-review') . '<br>' .
+			__('When you feel that a theme is ready to be approved, you should ask for feedback from your mentor or an experienced theme reviewer before you close the ticket.','theme-review') . '<br>' .
+			__('If seven days has passed without any word from the theme author, you can close the ticket as not approved.','theme-review') . '<br><br>';
+			?>
 	</div>
 </div>
 
 <div class="ready-button">
-<h3>You should now have your theme folder and your code editor ready so that you can easilly check the files.</h3>
-<a href="customize.php" class="button button-primary button-hero">I understand, take me to the customizer.</a>
+<h3><?php _e('You should now have your theme folder and your code editor ready so that you can easilly check the files.','theme-review');?></h3>
+<a href="customize.php" class="button button-primary button-hero"><?php _e('I understand, take me to the customizer.','theme-review');?></a>
 <br><br>
-<h2><?php __('Summary:','theme-review');?></h2>
+</div>
+<h2><?php _e('Summary:','theme-review');?></h2>
 <hr>
 <?php
- echo '<h3>' . __( 'Naming and Licensing', 'theme-review' ) . ': ' . get_theme_mod('theme_review_license', '') .'</h3>';
- echo '<h3>' . __( 'Links', 'theme-review' ) . ': ' .  get_theme_mod('theme_review_links', '').'</h3>';
+$license = esc_attr( get_theme_mod('theme_review_license', __('Not completed','theme-review') ) );
+$links = esc_attr( get_theme_mod('theme_review_links', __('Not completed','theme-review') ) );
+$lang = esc_attr( get_theme_mod('theme_review_lang', __('Not completed','theme-review') ) );
+$scripts =  esc_attr( get_theme_mod('theme_review_scripts', __('Not completed','theme-review') ) );
+$errors = esc_attr( get_theme_mod('theme_review_errors', __('Not completed','theme-review') ) );
+$core = esc_attr( get_theme_mod('theme_review_core', __('Not completed','theme-review') ) );
+$custom = esc_attr( get_theme_mod('theme_review_custom', __('Not completed','theme-review') ) );
+$content = esc_attr( get_theme_mod('theme_review_content', __('Not completed','theme-review') ) );
+$hooks = esc_attr( get_theme_mod('theme_review_hooks', __('Not completed','theme-review') ) );
+$prefix = esc_attr( get_theme_mod('theme_review_prefix', __('Not completed','theme-review') ) );
+$escaping = esc_attr( get_theme_mod('theme_review_escaping', __('Not completed','theme-review') ) );
+$misc = esc_attr( get_theme_mod('theme_review_misc', __('Not completed','theme-review') ) );
 
- echo '<h3>' . __( 'Language', 'theme-review' ) . ': ' . get_theme_mod('theme_review_lang', '').'</h3>';
- echo '<h3>' . __( 'Stylesheets and Scripts', 'theme-review' ) . ': ' . get_theme_mod('theme_review_scripts', '').'</h3>';
+ echo '<h3>' . __( 'Naming and Licensing', 'theme-review' ) . ': <i class="' . $license . '">' . $license . '</i></h3>';
+ echo '<h3>' . __( 'Links', 'theme-review' ) . ': <i class="' . $links . '">' . $links . '</i></h3>';
 
- echo '<h3>' . __( 'Errors, warnings and notices', 'theme-review' ) . ': ' . get_theme_mod('theme_review_errors', '').'</h3>';
- echo '<h3>' . __( 'Core functionality', 'theme-review' ) . ': ' .  get_theme_mod('theme_review_core', '').'</h3>';
+ echo '<h3>' . __( 'Language', 'theme-review' ) . ': <i class="' . $lang . '">' . $lang . '</i></h3>';
+ echo '<h3>' . __( 'Stylesheets and Scripts', 'theme-review' ) . ': <i class="' . $scripts . '">' . $scripts . '</i></h3>';
 
+ echo '<h3>' . __( 'Errors, warnings and notices', 'theme-review' ) . ': <i class="' . $errors. '">' . $errors . '</i></h3>';
+ echo '<h3>' . __( 'Core functionality', 'theme-review' ) . ': <i class="' . $core . '">' . $core  . '</i></h3>';
+
+ echo '<h3>' . __( 'Custom functionality and options', 'theme-review' ) . ': <i class="' . $custom .'">' . $custom . '</i></h3>';
+ echo '<h3>' . __( 'Custom content creation', 'theme-review' ) . ': <i class="' . $content  . '">' .  $content  . '</i></h3>';
+
+ echo '<h3>' . __( 'Hooks', 'theme-review' ) . ': <i class="' . $hooks . '">' . $hooks . '</i></h3>';
+ echo '<h3>' . __( 'Prefixing', 'theme-review' ) . ': <i class="' . $prefix . '">' .  $prefix . '</i></h3>';
+
+ echo '<h3>' . __( 'Sanitizing and escaping', 'theme-review' ) . ': <i class="' . $escaping . '">' . $escaping . '</i></h3>';
+ echo '<h3>' . __( 'Miscellaneous', 'theme-review' ) . ': <i class="' . $misc . '">' . $misc . '</i></h3>';
+
+
+   $trt_theme = wp_get_theme();
+    $trt_tags =$trt_theme->get( 'Tags' );
+    if (in_array ('accessibility-ready' , $trt_tags) ){
+    	 echo '<br><h3>' . __( 'Note:','theme-review') . '</h3> ' . __('This theme has an accessibility-ready tag and it needs an additional review by an accessibility expert. It is important that you do not close the ticket when you are finished with the basic review.','theme-review');
+    }
 ?>
 
-
-
-</div>
+<br><br>
 
 <div class="welcome-panel">			
 <h2><b><?php _e('Additional help','theme-review');?></b></h2>
-<div title="Click to toggle" class="handlediv"><br></div>
-	<div class="welcome-panel-content">				<h3>Stylesheets and Scripts</h3>
-					
-					The most common errors for this section are hardcoded scripts or styles in header.php and footer.php, 
-					and themes including their own version of jQuery or jQuery UI instead of using the core-bundled scripts.<br>
-					Please check all folders for minified and duplicate files. It is not uncommon for authors to forget to include the original versions of Font Awesome and Bootstrap.<br>
+<div title="<?php _e('Click to toggle','theme-review');?>" class="handlediv"><br></div>
+	<div class="welcome-panel-content"><h3><?php _e('Stylesheets and Scripts','theme-review');?></h3>
+		<?php _e('The most common errors for this section are hardcoded scripts or styles in header.php and footer.php, and themes including their own version of jQuery or jQuery UI instead of using the core-bundled scripts.<br>','theme-review');?>
+		<?php _e('Please check all folders for minified and duplicate files. It is not uncommon for authors to forget to include the original versions of Font Awesome and Bootstrap.<br>','theme-review');?>
 
-					<b>Examples:</b><br>
-					This is the wrong way of adding the stylesheet:<br>
-					<code> &lt;link type="text/css" rel="stylesheet" href="&lt;?php echo get_stylesheet_uri(); ?> /></code><br>
-					Correct way of adding the stylesheet to the front end:<br>
-					<code>
+		<b><?php _e('Examples:','theme-review');?></b><br>
+		<?php _e('This is the wrong way of adding the stylesheet:','theme-review');?><br>
+		<code> &lt;link type="text/css" rel="stylesheet" href="&lt;?php echo get_stylesheet_uri(); ?> /></code><br>
+		<?php _e('The correct way of adding a stylesheet to the front end:','theme-review');?><br>
+			<code>
 					add_action( 'wp_enqueue_scripts', 'theme_slug_css' );<br>
 					function theme_slug_css() {<br>
 					    wp_enqueue_style( 'theme-slug-style', get_stylesheet_uri() );<br>
 					}
-					</code><br>
-					Correct way of adding jQuery:<br>
-					jQuery can be added as a dependancy of a custom script like this:<br>
-					<code>
+			</code><br>
+			<?php 
+			echo __('The correct way of adding jQuery:','theme-review') . '<br>' . 
+					__('jQuery can be added as a dependancy of a custom script like this:','theme-review') . '<br>';
+				?>
+			<code>
 					add_action( 'wp_enqueue_scripts', 'theme_slug_scripts' );<br>
 					function theme_slug_scripts() {<br>
 						wp_enqueue_script('theme-slug-custom-script', get_stylesheet_directory_uri() . '/js/custom_script.js',	array( 'jquery' ) );<br>
 					}
-					</code>
-					Or by itself like this:<br>
-					<code>
+			</code><br>
+			<?php _e('Or by itself like this:','theme-review');?><br>	
+			<code>
 					add_action( 'wp_enqueue_scripts', 'theme_slug_scripts' );<br>
 					function theme_slug_scripts() {<br>
 						wp_enqueue_script('jquery');<br>
 					}
-					</code><br>
+			</code><br>
+			<?php    
+			echo '<br><h3>' . __('Requesting help','theme-review') . '</b></h3>'
+			 . __('You can always search in the Slack archive to see if your question has been answered before.', 'theme-review') . '<br>'
+			 . __('In your ticket, below the text area, is a text-field labeled "Cc:". To request help from an admin, add their username as one of the recipients.', 'theme-review') . '<br>';
+			printf( __('<a href="%s">List of active admins.</a>', 'theme-review'), esc_url( 'https://make.wordpress.org/themes/handbook/the-team/members/') );
+		
+			echo '<br><br><h3>' . __('More explanations and examples','theme-review') . '</b></h3><a href="https://make.wordpress.org/themes/handbook/review/required/explanations-and-examples/">Explanations and examples</a><br><br>';
+     ?>
 
-
-					<?php
-    				 	$preg = '/<script src/';
-						foreach ( glob(get_template_directory() . "/*.php")  as $file ) {
-							theme_review_checker( $preg, $file, "script");
-						}
-
-                    ?>
 	</div>
 </div>
-
-
 </div><!--end wrap -->
 	<?php
 }

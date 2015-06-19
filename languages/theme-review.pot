@@ -1,0 +1,720 @@
+# Copyright (C) 2015 Automattic
+# This file is distributed under the GNU General Public License v2 or later.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Theme Review\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
+"POT-Creation-Date: 2015-06-19 16:08+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: Poedit 1.8\n"
+"X-Poedit-KeywordsList: __;_e;esc_attr__;esc_attr_e\n"
+"X-Poedit-Basepath: ..\\\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: customizer.php:9 theme-review.php:20 theme-review.php:50
+msgid "Theme Review"
+msgstr ""
+
+#: customizer.php:10
+msgid "Start your review here."
+msgstr ""
+
+#: customizer.php:15 theme-review.php:181
+msgid "Naming and Licensing"
+msgstr ""
+
+#: customizer.php:21 theme-review.php:182
+msgid "Links"
+msgstr ""
+
+#: customizer.php:27 theme-review.php:184
+msgid "Language"
+msgstr ""
+
+#: customizer.php:33 theme-review.php:185 theme-review.php:212
+msgid "Stylesheets and Scripts"
+msgstr ""
+
+#: customizer.php:39 theme-review.php:187
+msgid "Errors, warnings and notices"
+msgstr ""
+
+#: customizer.php:45 theme-review.php:188
+msgid "Core functionality"
+msgstr ""
+
+#: customizer.php:51
+msgid "Custom functionality & options"
+msgstr ""
+
+#: customizer.php:57 theme-review.php:191
+msgid "Custom content creation"
+msgstr ""
+
+#: customizer.php:63 theme-review.php:193
+msgid "Hooks"
+msgstr ""
+
+#: customizer.php:69 theme-review.php:194
+msgid "Prefixing"
+msgstr ""
+
+#: customizer.php:75 theme-review.php:196
+msgid "Sanitizing and escaping"
+msgstr ""
+
+#: customizer.php:81 theme-review.php:197
+msgid "Miscellaneous"
+msgstr ""
+
+#: customizer.php:97
+msgid "The theme name must not contain trademarks, \"WordPress\" or \"Theme\"."
+msgstr ""
+
+#: customizer.php:98
+msgid "The theme needs to be 100% GPL compatible."
+msgstr ""
+
+#: customizer.php:99
+msgid "The theme should: <br> -Use the license and license uri in the header of style.css"
+msgstr ""
+
+#: customizer.php:100
+msgid "-Declare licenses of any resources included such as fonts or images, including images used in the screenshot"
+msgstr ""
+
+#: customizer.php:101
+msgid "-Have a copyright notice:<br> (Copyright Year Name)."
+msgstr ""
+
+#: customizer.php:102
+msgid "Open the readme file and make sure that license and copyright has been declared for all included third party resources."
+msgstr ""
+
+#: customizer.php:103
+msgid "List of GPL compatible licenses"
+msgstr ""
+
+#: customizer.php:109 customizer.php:146 customizer.php:193 customizer.php:221
+#: customizer.php:250 customizer.php:279 customizer.php:309 customizer.php:341
+#: customizer.php:372 customizer.php:399 customizer.php:437 customizer.php:465
+msgid "Mark as completed:"
+msgstr ""
+
+#: customizer.php:112 customizer.php:149 customizer.php:196 customizer.php:224
+#: customizer.php:253 customizer.php:282 customizer.php:312 customizer.php:344
+#: customizer.php:375 customizer.php:402 customizer.php:440 customizer.php:468
+#: customizer.php:502
+msgid "Pass"
+msgstr ""
+
+#: customizer.php:113 customizer.php:150 customizer.php:197 customizer.php:225
+#: customizer.php:254 customizer.php:283 customizer.php:313 customizer.php:345
+#: customizer.php:376 customizer.php:403 customizer.php:441 customizer.php:469
+#: customizer.php:503
+msgid "Fail"
+msgstr ""
+
+#: customizer.php:122
+msgid "Check Author URI</a>"
+msgstr ""
+
+#: customizer.php:123
+msgid "Check Theme URI"
+msgstr ""
+
+#: customizer.php:136
+msgid "Links should be related to the theme and helpful to the user."
+msgstr ""
+
+#: customizer.php:137
+msgid "WordPress.org links are reserved for official themes."
+msgstr ""
+
+#: customizer.php:138
+msgid "Check if there is a credit link in the customizer or the footer and if the link is appropriate."
+msgstr ""
+
+#: customizer.php:139
+msgid "There should only be one footer credit link and it needs to be the same as Author URI or Theme URI."
+msgstr ""
+
+#: customizer.php:140
+msgid "There should be no links to the authors social network pages."
+msgstr ""
+
+#: customizer.php:158
+msgid "<b style=\"color:red\">REQUIRED</b>: Text domain is missing or blank in style.css"
+msgstr ""
+
+#: customizer.php:171
+msgid "All theme text strings are to be translatable."
+msgstr ""
+
+#: customizer.php:171
+msgid "Text domain: "
+msgstr ""
+
+#: customizer.php:172
+msgid "WordPress must be spelled with a capital W and P. -A theme can be in any language, but only one."
+msgstr ""
+
+#: customizer.php:173
+msgid "RECOMMENDED:"
+msgstr ""
+
+#: customizer.php:174
+msgid "Make sure that there is a language file in the theme folder and that it refers to the correct theme."
+msgstr ""
+
+#: customizer.php:175
+msgid "Theme Handbook: Internationalization."
+msgstr ""
+
+#: customizer.php:177
+msgid "A basic translation string can look like this:"
+msgstr ""
+
+#: customizer.php:179
+msgid "If a translation is echoed, it can also look like this:"
+msgstr ""
+
+#: customizer.php:181
+msgid "A text that looks like this would fail, since it is not translatable:"
+msgstr ""
+
+#: customizer.php:183
+msgid "should be:"
+msgstr ""
+
+#: customizer.php:185
+msgid "Translated attributes should be escaped"
+msgstr ""
+
+#: customizer.php:186 theme-review.php:135
+msgid "Example:"
+msgstr ""
+
+#: customizer.php:211
+msgid "<b>Enqueuing scripts correctly is vital, and this section has additional information on the plugin page.</b>"
+msgstr ""
+
+#: customizer.php:212
+msgid "Script and stylesheets must be enqueued, with the exception of browser workaround scripts."
+msgstr ""
+
+#: customizer.php:213
+msgid "The theme must use core-bundled scripts if available, and include all scripts rather than hot-linking. "
+msgstr ""
+
+#: customizer.php:214
+msgid "Themes must not deregister core scripts."
+msgstr ""
+
+#: customizer.php:215
+msgid "If minfied scripts or styles are used, the original file must also be included."
+msgstr ""
+
+#: customizer.php:239
+msgid "Check for any php or javascript errors, warnings or notices on different pages of the theme."
+msgstr ""
+
+#: customizer.php:240
+msgid "Make sure that you also test any custom functionality and custom widgets."
+msgstr ""
+
+#: customizer.php:241
+msgid "Check for broken images and test header, logo, and background settings."
+msgstr ""
+
+#: customizer.php:242
+msgid "Themes are required to have a valid DOCTYPE declaration and include language_attributes."
+msgstr ""
+
+#: customizer.php:244
+msgid "Other HTML and css errors are not reasons for not approving a theme, but the theme should not be broken."
+msgstr ""
+
+#: customizer.php:269
+msgid "The theme should use WordPress functionality and features first, if available. This means that custom functions should not mimic or attempt to replace core functions."
+msgstr ""
+
+#: customizer.php:270
+msgid "(Function parameters and filters should be used instead.)"
+msgstr ""
+
+#: customizer.php:271
+msgid "Common example of these are custom pagination, hard coded search forms, options to disable comments, and custom image resizing."
+msgstr ""
+
+#: customizer.php:272
+msgid "It is often helpful to look up the WordPress functions that are used in the theme. The best resource for this is <a href=\"https://developer.wordpress.org/reference/\">the WordPress.org Developer Reference.</a>"
+msgstr ""
+
+#: customizer.php:273
+msgid "<code>comments_template();</code> must be included in singular views."
+msgstr ""
+
+#: customizer.php:297
+msgid "-Is there enough documentation for you to easilly set-up the theme?"
+msgstr ""
+
+#: customizer.php:298
+msgid "Are all options in the customizer? New themes are no longer allowed to create a separate options page."
+msgstr ""
+
+#: customizer.php:299
+msgid "<b>Plugin territory</b>"
+msgstr ""
+
+#: customizer.php:300
+msgid "When we talk about plugin territory, we mean content or functionality that users wants, indepedent of what theme they are using. Themes are meant to present content."
+msgstr ""
+
+#: customizer.php:301
+msgid "Examples include: custom post types, shortcodes, analytics, ads, SEO. It also includes making changes to login forms, admin interface, editors etc."
+msgstr ""
+
+#: customizer.php:302
+msgid "If you are not sure what a function does, please ask the theme author. If you are not sure if something is allowed or not, you can ask an admin."
+msgstr ""
+
+#: customizer.php:327
+msgid "If the theme uses meta boxes, make sure that they are used for presentation only, for example background color or sidebar positions."
+msgstr ""
+
+#: customizer.php:328
+msgid "Examples of common meta boxes that are not allowed includes:"
+msgstr ""
+
+#: customizer.php:329
+msgid "content attribution, video source, link source, event dates, and quotes."
+msgstr ""
+
+#: customizer.php:330
+msgid "Trivial content creation as customizer options is allowed:"
+msgstr ""
+
+#: customizer.php:331
+msgid ""
+"Site footer text,  Call-to-Action, descriptive content blocks (about us/profile/etc.), <br>\n"
+"                        Custom presentation of existing user data, with trivial content additions <br>such as a widget/content block with a static page link, \n"
+"                        custom icon, custom title/description."
+msgstr ""
+
+#: customizer.php:334
+msgid "Larger text options are generally not allowed, if it is designed to hold more than a few lines, it should be a post or a page."
+msgstr ""
+
+#: customizer.php:359
+msgid "Removing or modifying non-presentational hooks is not allowed, this includes disabling the admin tool bar."
+msgstr ""
+
+#: customizer.php:360 theme-review.php:216
+msgid "Examples:"
+msgstr ""
+
+#: customizer.php:364
+msgid "Themes should use the right hooks for their functions."
+msgstr ""
+
+#: customizer.php:365
+msgid "load_theme_textdomain, add_theme_support, and register_nav_menu(s) should be in a function, added with <br><code>add_action( \"after_setup_theme\", \"function_name\" );</code>"
+msgstr ""
+
+#: customizer.php:390
+msgid "The theme should use a unique prefix for everything the Theme defines in the public namespace."
+msgstr ""
+
+#: customizer.php:391
+msgid "It is not uncommon for authors to forget to prefix their functions or Classes. The recommended prefix is the theme-slug."
+msgstr ""
+
+#: customizer.php:392
+msgid "Tip: use a text editor that can search entire directories to create a list of all functions."
+msgstr ""
+
+#: customizer.php:417
+msgid "Sanitize <b>everything</b>."
+msgstr ""
+
+#: customizer.php:418
+msgid "By now you should be somewhat familiar with the themes custom functions."
+msgstr ""
+
+#: customizer.php:419
+msgid "If the theme uses the customizer, then each setting should have a <code>sanitize_callback</code>. Make sure that the callback function is appropriate and working."
+msgstr ""
+
+#: customizer.php:421
+msgid "If the theme uses meta boxes, the options needs to be sanitized before they are added or updated."
+msgstr ""
+
+#: customizer.php:423
+msgid "All untrusted data should be escaped before output. This is a very common problem."
+msgstr ""
+
+#: customizer.php:424
+msgid "esc_url() should be used on all URLs, including those in the \"src\" and \"href\" attributes of an HTML element."
+msgstr ""
+
+#: customizer.php:426
+msgid " esc_attr() can be used in other attributes. esc_attr_e() can be used when echoing a translation inside an attribute."
+msgstr ""
+
+#: customizer.php:428
+msgid "Recommended:"
+msgstr ""
+
+#: customizer.php:429
+msgid "esc_html() is used anytime our HTML element encloses a section of data we are outputting. esc_html_e() can be used when echoing a translation."
+msgstr ""
+
+#: customizer.php:455
+msgid "Check to make sure there are no unused or empty files, zip files or .git files in the theme folder."
+msgstr ""
+
+#: customizer.php:456
+msgid "If there are large sections of code that is commented it out, encourage the author to delete them."
+msgstr ""
+
+#: customizer.php:457
+msgid "Themes must not collect user data without asking for permission."
+msgstr ""
+
+#: customizer.php:458
+msgid "There should be no pay wall restricting any WordPress feature."
+msgstr ""
+
+#: customizer.php:459
+msgid "The Screenshot should be of the actual theme as it appears with default options, not a logo or mockup. It should be no bigger than 1200 x 900px."
+msgstr ""
+
+#: customizer.php:480
+msgid "Accessibility"
+msgstr ""
+
+#: customizer.php:491
+msgid ""
+"This theme has an accessibility-ready tag and it needs an additional review by an accessibility expert. \n"
+"                                It is important that you do not close the ticket when you are finished with the basic review."
+msgstr ""
+
+#: theme-review.php:51 theme-review.php:121 theme-review.php:211
+msgid "Click to toggle"
+msgstr ""
+
+#: theme-review.php:53
+msgid "This plugin is designed to be a compliment to the Theme Review guidelines and as a guide to help you with your first theme review."
+msgstr ""
+
+#: theme-review.php:56
+msgid "Preparing for your review"
+msgstr ""
+
+#: theme-review.php:58
+msgid "Awesome! You have already completed the first steps in setting up your testing environment:"
+msgstr ""
+
+#: theme-review.php:61
+msgid "WP_DEBUG is on."
+msgstr ""
+
+#: theme-review.php:64
+#, php-format
+msgid "Now, we recommend you to set the following constants to <code>true</code> in your <code>wp-config.php</code> file. <a href=\"%s\" target=\"_blank\">Need help?</a>"
+msgstr ""
+
+#: theme-review.php:70
+msgid "Theme Check is active."
+msgstr ""
+
+#: theme-review.php:76
+msgid "Theme Check is installed but not active."
+msgstr ""
+
+#: theme-review.php:80
+msgid "We recommend that you also install the Theme Check plugin:"
+msgstr ""
+
+#: theme-review.php:87
+msgid "Now, is your ticket ready?"
+msgstr ""
+
+#: theme-review.php:88
+msgid "You are reviewing:"
+msgstr ""
+
+#: theme-review.php:94
+#, php-format
+msgid "-If this is not your ticket, <a href=\"%s\">install and activate the correct theme.</a>"
+msgstr ""
+
+#: theme-review.php:95
+msgid "Ticket? -What ticket?"
+msgstr ""
+
+#: theme-review.php:96
+msgid "A theme trac ticket is a ticket with information about a theme that has been submitted to WordPress.org."
+msgstr ""
+
+#: theme-review.php:97
+msgid "If this is your first review, you might be more comfortable reviewing our test theme that you can download here: (add link to doing it wrong)."
+msgstr ""
+
+#: theme-review.php:98
+#, php-format
+msgid "If you are ready to take on a real ticket, please <a href=\"%s\"><button class=\"make-request\">Request a theme to review.</button></a>"
+msgstr ""
+
+#: theme-review.php:99
+#, php-format
+msgid "You will then find your tickets here: <a href=\"%s\">https://themes.trac.wordpress.org</a>."
+msgstr ""
+
+#: theme-review.php:101
+msgid "In your ticket you will find the theme name, the authors name, and a link to a zip file containing the theme that you should review.<br>"
+msgstr ""
+
+#: theme-review.php:102
+msgid "Below the theme screenshot is a form, so sa \"Hi\" and <b>introduce yourself to your author.</b>"
+msgstr ""
+
+#: theme-review.php:108
+msgid "Stuck?"
+msgstr ""
+
+#: theme-review.php:110
+#, php-format
+msgid "If you have questions about reviewing, come talk to other reviewers on <a href=\"%s\">wordpress.slack.com #themereview</a>"
+msgstr ""
+
+#: theme-review.php:112
+#, php-format
+msgid "We also have weekly meetings on Slack:<br>Tuesdays @ 18:00 UTC<br><i>For agenda, visit our Make blog:</i> <a href=\"%s\">make.wordpress.org/themes/</a>"
+msgstr ""
+
+#: theme-review.php:120
+msgid "Performing your review"
+msgstr ""
+
+#: theme-review.php:123
+#, php-format
+msgid "The full guidelines that you will review the theme against can be found <a href=\"%s\">here.</a>"
+msgstr ""
+
+#: theme-review.php:124
+msgid "The plugin should only be seen as a complement to the guidelines."
+msgstr ""
+
+#: theme-review.php:127
+msgid "<b>What you will be checking:</b>"
+msgstr ""
+
+#: theme-review.php:128
+msgid ""
+"There is more to a review than checking if the content is displayed nicely. You will be checking if the theme is <b>secure</b>, \n"
+"\t\t\tif there are any <b>errors</b>, if it is <b>translatable</b> and if all theme <b>options</b> are working correctly.<br>"
+msgstr ""
+
+#: theme-review.php:130
+msgid "You will be reading a lot of code, and one theme will have a different setup than the other, but don't worry, this becomes easier as you gain more experience.<br>"
+msgstr ""
+
+#: theme-review.php:131
+msgid "<b>Reviewing a theme with the help of the plugin:</b>"
+msgstr ""
+
+#: theme-review.php:132
+msgid "Each section under the Theme Review panel in the customizer represents a requirement, accompanied with a short statement or a question."
+msgstr ""
+
+#: theme-review.php:133
+msgid "Once a check has been completed, it will be added to the progress and summary below."
+msgstr ""
+
+#: theme-review.php:136
+msgid "An image showing what a section looks like."
+msgstr ""
+
+#: theme-review.php:137
+msgid "Anything in red is a required item that should be noted in your review."
+msgstr ""
+
+#: theme-review.php:138
+msgid "Writing your review"
+msgstr ""
+
+#: theme-review.php:139
+msgid "You should take notes as you review each part of the theme, and write down any questions that you have for the author."
+msgstr ""
+
+#: theme-review.php:140
+msgid "The suggested format for your review is as follows:"
+msgstr ""
+
+#: theme-review.php:141
+msgid "Welcome wrapper."
+msgstr ""
+
+#: theme-review.php:141
+msgid "Say Hi to the author, let them know what you are going to do. This may be their first review."
+msgstr ""
+
+#: theme-review.php:142
+msgid "Say the outcome."
+msgstr ""
+
+#: theme-review.php:142
+msgid "Let the author know from the start what the outcome is."
+msgstr ""
+
+#: theme-review.php:143
+msgid "Required."
+msgstr ""
+
+#: theme-review.php:143
+msgid "List all the required items, a theme can't be approved until all of these are met."
+msgstr ""
+
+#: theme-review.php:144
+msgid "Recommended."
+msgstr ""
+
+#: theme-review.php:144
+msgid "You can then list all the recommended items. These won't be a grounds to not approve, but they are good theme practice."
+msgstr ""
+
+#: theme-review.php:145
+msgid "Notes."
+msgstr ""
+
+#: theme-review.php:145
+msgid "This could be a section where you add design notes, maybe additional information. Again, this can't be something you don't approve because, but it can be a way to educate."
+msgstr ""
+
+#: theme-review.php:146
+msgid "Say what is going to happen next."
+msgstr ""
+
+#: theme-review.php:146
+msgid "Keeping the author informed is great. Let them know you will let them upload a new version or what the approval process is."
+msgstr ""
+
+#: theme-review.php:149
+msgid "<h5>Using the headings \"Required, Recommended and Notes\" is really helpful for people when viewing the review.</h5>"
+msgstr ""
+
+#: theme-review.php:150
+msgid "Finishing your review"
+msgstr ""
+
+#: theme-review.php:151
+msgid "It is important that you do not close the ticket when you submit your notes."
+msgstr ""
+
+#: theme-review.php:152
+msgid "If there are required items that needs to be fixed, the author has seven days to reply. They can then submit a new version, or ask for more time."
+msgstr ""
+
+#: theme-review.php:153
+msgid "If a new version is submitted, you need to check if all the required items has been fixed."
+msgstr ""
+
+#: theme-review.php:154
+msgid "When you feel that a theme is ready to be approved, you should ask for feedback from your mentor or an experienced theme reviewer before you close the ticket."
+msgstr ""
+
+#: theme-review.php:155
+msgid "If seven days has passed without any word from the theme author, you can close the ticket as not approved."
+msgstr ""
+
+#: theme-review.php:161
+msgid "You should now have your theme folder and your code editor ready so that you can easilly check the files."
+msgstr ""
+
+#: theme-review.php:162
+msgid "I understand, take me to the customizer."
+msgstr ""
+
+#: theme-review.php:165
+msgid "Summary:"
+msgstr ""
+
+#: theme-review.php:168 theme-review.php:169 theme-review.php:170
+#: theme-review.php:171 theme-review.php:172 theme-review.php:173
+#: theme-review.php:174 theme-review.php:175 theme-review.php:176
+#: theme-review.php:177 theme-review.php:178 theme-review.php:179
+msgid "Not completed"
+msgstr ""
+
+#: theme-review.php:190
+msgid "Custom functionality and options"
+msgstr ""
+
+#: theme-review.php:203
+msgid "Note:"
+msgstr ""
+
+#: theme-review.php:203
+msgid "This theme has an accessibility-ready tag and it needs an additional review by an accessibility expert. It is important that you do not close the ticket when you are finished with the basic review."
+msgstr ""
+
+#: theme-review.php:210
+msgid "Additional help"
+msgstr ""
+
+#: theme-review.php:213
+msgid "The most common errors for this section are hardcoded scripts or styles in header.php and footer.php, and themes including their own version of jQuery or jQuery UI instead of using the core-bundled scripts.<br>"
+msgstr ""
+
+#: theme-review.php:214
+msgid "Please check all folders for minified and duplicate files. It is not uncommon for authors to forget to include the original versions of Font Awesome and Bootstrap.<br>"
+msgstr ""
+
+#: theme-review.php:217
+msgid "This is the wrong way of adding the stylesheet:"
+msgstr ""
+
+#: theme-review.php:219
+msgid "The correct way of adding a stylesheet to the front end:"
+msgstr ""
+
+#: theme-review.php:227
+msgid "The correct way of adding jQuery:"
+msgstr ""
+
+#: theme-review.php:228
+msgid "jQuery can be added as a dependancy of a custom script like this:"
+msgstr ""
+
+#: theme-review.php:236
+msgid "Or by itself like this:"
+msgstr ""
+
+#: theme-review.php:244
+msgid "Requesting help"
+msgstr ""
+
+#: theme-review.php:245
+msgid "You can always search in the Slack archive to see if your question has been answered before."
+msgstr ""
+
+#: theme-review.php:246
+msgid "In your ticket, below the text area, is a text-field labeled \"Cc:\". To request help from an admin, add their username as one of the recipients."
+msgstr ""
+
+#: theme-review.php:247
+#, php-format
+msgid "<a href=\"%s\">List of active admins.</a>"
+msgstr ""
+
+#: theme-review.php:249
+msgid "More explanations and examples"
+msgstr ""
